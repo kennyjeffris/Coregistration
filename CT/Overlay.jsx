@@ -109,8 +109,8 @@ if (!dataConfirmed) {
     var widthRatio = ctImage.width / workingMPI.width;
     var heightRatio = ctImage.height / workingMPI.height;
     // Scale the image based on the input reference length.
-    workingMPI.resizeImage(ctrefLength, newctHeight,
-      ctImage.resolution, ResampleMethod.AUTOMATIC, 0);
+    workingMPI.resizeImage(mpirefLength, mpinewHeight,
+      newmpiResolution, ResampleMethod.AUTOMATIC, 0);
 
     // Create blank Ps document for the overlay image based on CT size.
     var mergedDoc = app.documents.add(ctImage.width, ctImage.height,
@@ -126,7 +126,6 @@ if (!dataConfirmed) {
     mergedDoc.selection.selectAll();
     // Paste the CT image.
     mergedDoc.paste();
-
     // Make CT image the activeDocument (for copying).
     app.activeDocument = workingMPI;
     // Copy the entire image.
@@ -137,6 +136,9 @@ if (!dataConfirmed) {
     mergedDoc.selection.selectAll();
     // Paste the MPI image.
     mergedDoc.paste();
+    // Resize MPI Image to match the CT Image.
+    //activeDocument.activeLayer.resize(widthRatio * 100,
+      //heightRatio * 100, AnchorPosition.MIDDLECENTER);
     // Set the Transparency of the MPI image to Screen.
     activeDocument.activeLayer.blendMode = BlendMode.SCREEN;
     // Close the MPI image without saving.
