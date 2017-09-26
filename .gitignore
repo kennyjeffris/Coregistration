@@ -1,5 +1,8 @@
 *.psd
 *.png
 *.jpg
+*.tif
+*/Kubtec Images
 Images/*
-Final\ Images/*
+*/Final Images
+Overlay Dataset
